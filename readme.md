@@ -14,8 +14,6 @@
 npm install
 ```
 
----
-
 ## Variables de entorno
 
 Crear archivo `.env`
