@@ -1,24 +1,10 @@
 import express from "express";
-import { crearFacturaB } from "../services/factura.service.js";
+import facturaController from "../controllers/factura.controller.js";
 
 const router = express.Router();
 
-router.post("/facturar", async (req, res) => {
-  try {
-    const result = await crearFacturaB();
-
-    res.json({
-      ok: true,
-      ...result,
-    });
-  } catch (error) {
-    console.log(error.response?.data || error);
-
-    res.status(500).json({
-      ok: false,
-      error: error.response?.data || error.message,
-    });
-  }
-});
+router.post("/", facturaController.crearFacturaB);
+router.get("/ultimo", facturaController.obtenerUltimaFactura);
+// router.get("/:id", facturaController.obtenerFacturaPorId); //NO ESTA CREADO
 
 export default router;
